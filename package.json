@@ -12,12 +12,7 @@
     "email": "qq1909698494@gmail.com"
   },
   "type": "module",
-  "bin": {
-    "pup-mcp-server": "src/mcp_server.ts"
-  },
-  "exports": {
-    ".": "./src/index.ts"
-  },
+  "bin": "bin.ts",
   "engines": {
     "bun": ">= 1",
     "node": ">= 20"

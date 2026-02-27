@@ -2,23 +2,21 @@
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import z from "zod";
 import { pup, RecordSchema } from "pup-recorder";
+import z from "zod";
+import pkg from "./package.json";
 
 export const PupMCPSchema = z
   .object({ source: z.string().describe("file://, http(s)://, or data: URI") })
   .extend(RecordSchema.shape);
 
-export const MCP_TOOL_NAME = "pup-recorder";
-export const MCP_TOOL_TITLE = "Record Webpage";
-export const MCP_TOOL_DESC = "Record a webpage to video";
-
-export function mcpAddPup(server: McpServer) {
+async function main() {
+  const server = new McpServer(pkg);
   server.registerTool(
-    MCP_TOOL_NAME,
+    "pup-recorder",
     {
-      title: MCP_TOOL_TITLE,
-      description: MCP_TOOL_DESC,
+      title: "Record Webpage",
+      description: "Record a webpage to video",
       inputSchema: PupMCPSchema,
     },
     async (args) => {
@@ -37,10 +35,7 @@ export function mcpAddPup(server: McpServer) {
       }
     },
   );
-}
-
-export async function startMCPServer() {
-  const server = new McpServer({ name: "pup-recorder-mcp", version: "0.0.1" });
-  mcpAddPup(server);
   await server.connect(new StdioServerTransport());
 }
+
+main();
