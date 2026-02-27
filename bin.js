@@ -6,7 +6,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { pup, RecordSchema } from "pup-recorder";
 import z from "zod";
-import pkg from "./package.json";
+import pkg from "./package.json" with { type: "json" };
 
 export const PupMCPSchema = z
   .object({ source: z.string().describe("file://, http(s)://, or data: URI") })

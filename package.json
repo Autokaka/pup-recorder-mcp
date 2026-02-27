@@ -1,6 +1,6 @@
 {
   "name": "pup-recorder-mcp",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "description": "MCP server for pup-recorder.",
   "repository": {
     "type": "git",
@@ -18,10 +18,16 @@
     "node": ">= 20"
   },
   "engineStrict": true,
+  "devDependencies": {
+    "@modelcontextprotocol/inspector": "latest"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "latest",
     "@typescript/native-preview": "latest",
     "pup-recorder": "workspace:*",
     "zod": "latest"
+  },
+  "scripts": {
+    "dev": "@modelcontextprotocol/inspector bin.js"
   }
 }
