@@ -1,0 +1,35 @@
+{
+  "name": "pup-recorder-mcp",
+  "version": "0.0.1",
+  "description": "MCP server for pup-recorder.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Autokaka/pup-recorder-mcp.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "autokaka",
+    "email": "qq1909698494@gmail.com"
+  },
+  "type": "module",
+  "bin": {
+    "pup-mcp-server": "src/mcp_server.ts"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "engines": {
+    "bun": ">= 1",
+    "node": ">= 20"
+  },
+  "engineStrict": true,
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "latest",
+    "@typescript/native-preview": "latest",
+    "pup-recorder": "workspace:*",
+    "zod": "latest"
+  },
+  "scripts": {
+    "build": "tsgo"
+  }
+}
