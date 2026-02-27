@@ -1,6 +1,6 @@
 {
   "name": "pup-recorder-mcp",
-  "version": "0.0.2",
+  "version": "0.0.7",
   "description": "MCP server for pup-recorder.",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
     "email": "qq1909698494@gmail.com"
   },
   "type": "module",
-  "bin": "bin.ts",
+  "bin": "bin.js",
   "engines": {
     "bun": ">= 1",
     "node": ">= 20"
@@ -23,8 +23,5 @@
     "@typescript/native-preview": "latest",
     "pup-recorder": "workspace:*",
     "zod": "latest"
-  },
-  "scripts": {
-    "build": "tsgo"
   }
 }

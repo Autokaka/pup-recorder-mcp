@@ -2,12 +2,12 @@
 
 ## NAME
 
-pup-recorder-mcp - MCP server for pup(1)
+pup-recorder-mcp - MCP server that exposes pup(1) over stdio
 
 ## SYNOPSIS
 
 ```
-pup-mcp-server
+npx --yes pup-recorder-mcp
 ```
 
 ## DESCRIPTION
@@ -41,11 +41,19 @@ outDir            string   default "out"
 useInnerProxy     boolean  default false
 ```
 
-Returns JSON: `{ mp4?, webm?, mov?, cover, width, height, fps, duration }`.
+Returns `{ mp4?, webm?, mov?, cover, width, height, fps, duration }`.
+
+## ENVIRONMENT
+
+```
+PUP_LOG_LEVEL        0=error 1=warn 2=info 3=debug, default 2
+PUP_USE_INNER_PROXY  1=on, default 0
+FFMPEG_BIN           default "ffmpeg"
+```
 
 ## SEE ALSO
 
-pup(1), pup(7)
+pup-recorder(1), pup(7)
 
 ## AUTHOR
 
