@@ -43,22 +43,9 @@ useInnerProxy     boolean  default false
 
 Returns JSON: `{ mp4?, webm?, mov?, cover, width, height, fps, duration }`.
 
-## API
-
-```typescript
-import {
-  MCP_TOOL_DESC,
-  MCP_TOOL_NAME,
-  MCP_TOOL_TITLE,
-  mcpAddPup,
-  PupMCPSchema,
-  startMCPServer,
-} from "pup-recorder-mcp";
-```
-
 ## SEE ALSO
 
-pup(1), pup-recorder-opencode(7)
+pup(1), pup(7)
 
 ## AUTHOR
 
