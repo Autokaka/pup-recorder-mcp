@@ -37,6 +37,7 @@ width             number   default 1920
 height            number   default 1080
 fps               number   default 30
 withAlphaChannel  boolean  default false
+withAudio         boolean  default false
 outDir            string   default "out"
 useInnerProxy     boolean  default false
 ```
