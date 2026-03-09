@@ -2,7 +2,7 @@
 
 ## NAME
 
-pup-recorder-mcp - MCP server that exposes pup(1) over stdio
+pup-recorder-mcp - MCP server wrapping pup(1)
 
 ## SYNOPSIS
 
@@ -10,46 +10,41 @@ pup-recorder-mcp - MCP server that exposes pup(1) over stdio
 npx --yes pup-recorder-mcp
 ```
 
-## DESCRIPTION
-
-Exposes pup(1) as an MCP tool over stdio transport.
-
 ## CONFIGURATION
 
 ```json
 {
   "mcpServers": {
-    "pup-recorder": {
-      "command": "npx",
-      "args": ["--yes", "pup-recorder-mcp"]
-    }
+    "pup-recorder": { "command": "npx", "args": ["--yes", "pup-recorder-mcp"] }
   }
 }
 ```
 
 ## TOOL
 
+**pup-recorder**
+
 ```
-name              pup-recorder
-source            string   file://, http(s)://, or data: URI (required)
-duration          number   seconds, default 5
+source            string   required
 width             number   default 1920
 height            number   default 1080
 fps               number   default 30
+duration          number   default 5
+outDir            string   default "out"
 withAlphaChannel  boolean  default false
 withAudio         boolean  default false
-outDir            string   default "out"
 useInnerProxy     boolean  default false
 ```
 
-Returns `{ mp4?, webm?, mov?, cover, width, height, fps, duration }`.
+Returns `{ options, files: { mp4?, webm?, mov?, cover } }`.
 
 ## ENVIRONMENT
 
 ```
-PUP_LOG_LEVEL        0=error 1=warn 2=info 3=debug, default 2
-PUP_USE_INNER_PROXY  1=on, default 0
-FFMPEG_BIN           default "ffmpeg"
+PUP_LOG_LEVEL        0-3, default 2
+PUP_USE_INNER_PROXY  1=on
+PUP_FFMPEG_PATH      default "ffmpeg"
+PUP_DISABLE_GPU      1=on
 ```
 
 ## SEE ALSO
