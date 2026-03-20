@@ -31,19 +31,18 @@ height            number   default 1080
 fps               number   default 30
 duration          number   default 5
 outDir            string   default "out"
-withAlphaChannel  boolean  default false
+formats           string[] default ["mp4"], allowed: mp4, webm
 withAudio         boolean  default false
 useInnerProxy     boolean  default false
 ```
 
-Returns `{ options, files: { mp4?, webm?, mov?, cover } }`.
+Returns `{ options, files: { mp4?, webm?, cover } }`.
 
 ## ENVIRONMENT
 
 ```
 PUP_LOG_LEVEL        0-3, default 2
 PUP_USE_INNER_PROXY  1=on
-PUP_FFMPEG_PATH      default "ffmpeg"
 PUP_DISABLE_GPU      1=on
 ```
 
