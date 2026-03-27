@@ -2,7 +2,7 @@
 
 ## NAME
 
-pup-recorder-mcp - MCP server wrapping pup(1)
+pup-recorder-mcp - MCP server for pup-recorder
 
 ## SYNOPSIS
 
@@ -25,25 +25,26 @@ npx --yes pup-recorder-mcp
 **pup-recorder**
 
 ```
-source            string   required
-width             number   default 1920
-height            number   default 1080
-fps               number   default 30
-duration          number   default 5
-outDir            string   default "out"
-formats           string[] default ["mp4"], allowed: mp4, webm
-withAudio         boolean  default false
-useInnerProxy     boolean  default false
+source          string   required
+width           number   default: 1920
+height          number   default: 1080
+fps             number   default: 30
+duration        number   default: 5
+outFile         string   default: output.mp4
+withAudio       boolean  default: false
+deterministic   boolean  default: false
+useInnerProxy   boolean  default: false
 ```
 
-Returns `{ options, files: { mp4?, webm?, cover } }`.
+Returns `{ options, written, jank, outFile, audio? }`.
 
 ## ENVIRONMENT
 
 ```
-PUP_LOG_LEVEL        0-3, default 2
+PUP_LOG_LEVEL        0-3
 PUP_USE_INNER_PROXY  1=on
 PUP_DISABLE_GPU      1=on
+PUP_DETERMINISTIC    1=on
 ```
 
 ## SEE ALSO
