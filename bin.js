@@ -4,13 +4,13 @@
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { pup, RecordSchema } from "pup-recorder";
+import { pup, RenderSchema } from "pup-recorder";
 import z from "zod";
 import pkg from "./package.json" with { type: "json" };
 
 export const PupMCPSchema = z
   .object({ source: z.string().describe("file://, http(s)://, or data: URI") })
-  .extend(RecordSchema.shape);
+  .extend(RenderSchema.shape);
 
 async function main() {
   const server = new McpServer(pkg);
@@ -30,9 +30,7 @@ async function main() {
       } catch (error) {
         return {
           isError: true,
-          content: [
-            { type: "text", text: JSON.stringify({ error: String(error) }) },
-          ],
+          content: [{ type: "text", text: JSON.stringify({ error: String(error) }) }],
         };
       }
     },
