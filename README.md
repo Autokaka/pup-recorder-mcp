@@ -25,18 +25,26 @@ npx --yes pup-recorder-mcp
 **pup-recorder**
 
 ```
-source          string   required
-width           number   default: 1920
-height          number   default: 1080
-fps             number   default: 30
-duration        number   default: 5
-outFile         string   default: output.mp4
-withAudio       boolean  default: false
-deterministic   boolean  default: false
-useInnerProxy   boolean  default: false
+source          string    required   file://, http(s)://, or data: URI
+width           number    1920
+height          number    1080
+fps             number    30
+duration        number    5          seconds
+outFiles        string[]  ["out/html.mp4", "out/html.webm"]
+                                     extension (.mp4/.webm) selects encoder
+withAudio       boolean   false      capture and encode audio
+deterministic   boolean   false      render by frame rather than recording
+useInnerProxy   boolean   false      bilibili inner proxy for resource access
+disableGpu      boolean   false      slower, more stable
+disableHwCodec  boolean   false      force software x265 over NVENC/VideoToolbox
+windowTolerant  boolean   false      fall back to dom-ready if warmup times out
+windowTimeout   number    10         window load timeout, seconds
+screenshots     number[]  []         second marks to dump frames as PNG
 ```
 
-Returns `{ options, written, jank, outFile, audio? }`.
+Returns `{ options, written, outFiles, blank, jank, screenshots }`.
+`blank` is the blank-frame ratio and `jank` the frame-drop score; both are
+0 = perfect, 1 = worst. `jank` is always 0 in deterministic mode.
 
 ## ENVIRONMENT
 
