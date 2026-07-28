@@ -19,11 +19,11 @@
   },
   "engineStrict": true,
   "devDependencies": {
-    "@modelcontextprotocol/inspector": "latest"
+    "@modelcontextprotocol/inspector": "latest",
+    "typescript": "latest"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "latest",
-    "typescript": "latest",
     "pup-recorder": "workspace:*",
     "zod": "latest"
   },
